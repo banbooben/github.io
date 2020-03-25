@@ -1,10 +1,14 @@
 ---
 title: docker命令
 date: 2020-03-22 17:09:10
-tags:
+tags: docker
 comments: true
+top:
+false cover:
+false password:
+summary:
+categories:
 ---
-### docker命令
 
 - 列出所有的容器ID
 

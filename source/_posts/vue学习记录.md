@@ -1,16 +1,15 @@
 ---
-title: vue的使用
+title: vue学习记录
+date: 2020-03-22 19:51:16
+tags: Vue
 comments: true
 mathjax: true
-date: 2020-03-22 19:51:16
-top:
+top: 
 false cover:
 false password:
 summary:
-tags:
 categories:
 ---
-## Vue的使用
 
 ### vue介绍
 

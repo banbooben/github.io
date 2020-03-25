@@ -1,13 +1,12 @@
 ---
 title: {{ title }} 
 date: {{ date }} 
+tags: 
+comments: true
+mathjax: true
 top: 
 false cover: 
 false password: 
-# toc: true 
-comments: true
-mathjax: true
 summary: 
-tags: 
 categories:
 ---
