@@ -16,7 +16,7 @@ categories:
 ### 如何使用
 
 - 本地生成密钥（自己的、公司的使用不同的名字区分）
-- 公钥id_ras.pub添加到不同库
+- 公钥id_ras_*.pub添加到不同库
     - 将自己的密钥添加到github账号下的SSH and GPG keys中
     - 将公司的密钥添加到公司gitlab账号下的ssh keys中
 - 配置`~/.ssh/config`文件
@@ -32,9 +32,9 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ssh-keygen -t rsa  -C "your_email@example.com"
 
 # 例如：
-ssh-keygen -t rsa -b 4096 -C "shangyameng@datagrand.com"
+ssh-keygen -t rsa -b 4096 -C "sarmn@abc.com"
 > Generating public/private rsa key pair.
-> Enter file in which to save the key (/Users/sarmn/.ssh/id_rsa): id_rsa_datagrand
+> Enter file in which to save the key (/Users/sarmn/.ssh/id_rsa): id_rsa_abc
 
 ```
 
@@ -63,12 +63,12 @@ Host github.com
     User laotozi
 
 # gitlab
-Host git.datagrand.com
-    HostName git.datagrand.com  //这里填你们公司的git网址即可
+Host git.abc.com
+    HostName git.abc.com  //这里填你们公司的git网址即可
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/id_rsa_datagrand
+    IdentityFile ~/.ssh/id_rsa_abc
     UserKnownHostsFile=~/.ssh/known_hosts
-    User shangyameng
+    User sarmn
 
 ```
 
@@ -87,7 +87,7 @@ eval "$(ssh-agent -s)"
 
 ```shell
 # 添加到管理
-ssh-add -K ~/.ssh/id_rsa_datagrand
+ssh-add -K ~/.ssh/id_rsa_abc
 
 # 查看已添加到ssh密钥
 ssh-add -l
@@ -105,8 +105,8 @@ git config --global --unset user.email
 # 在git clone 后需要在改项目目录下设置单独的用户名和账号
 # 设置单独项目的用户名和帐号
 cd $project_path/
-git config user.email 'shangyameng@datagrand.com'
-git config user.name 'shangyameng'
+git config user.email 'sarmn@abc.com'
+git config user.name 'sarmn'
 ```
 
 
