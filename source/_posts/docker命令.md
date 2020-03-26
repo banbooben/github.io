@@ -7,7 +7,7 @@ top:
 false cover:
 false password:
 summary:
-categories:
+categories: docker
 ---
 
 - 列出所有的容器ID

@@ -1,14 +1,14 @@
 ---
 title: Mac本地管理多个ssh密钥
 date: 2020-03-25 21:35:35
-tags: ssh密钥管理
+tags: linux ssh
 comments: true
 mathjax: true
 top: 
 false cover:
 false password:
 summary:
-categories:
+categories: Linux
 ---
 
 ​		学习、工作使用一台电脑，难免会有诸多不便：gitlab账号、dockerhub账号、跳板机等等，都会用到公钥，而且一般都是用公司邮箱生成的，但自己又要学习，记录一些代码，写一些小项目，总不能也用公司的吧，所以通过各种搜索有了这篇记录。

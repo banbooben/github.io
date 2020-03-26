@@ -1,14 +1,14 @@
 ---
 title: vue学习记录
 date: 2020-03-22 19:51:16
-tags: Vue
+tags: Vue语法
 comments: true
 mathjax: true
 top: 
 false cover:
 false password:
 summary:
-categories:
+categories: Vue
 ---
 
 ### vue介绍
