@@ -15,5 +15,3 @@ git pull | awk '{print $0}'
 
 git push | awk '{print $0}'
 
-hexo d | awk '{print $0}'
-
