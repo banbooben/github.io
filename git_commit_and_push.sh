@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 获取当前时间 2020-03-25
-time=$(date "+%Y-%m-%d")
+time=$(date "+%Y-%m-%d %H:%M:%S")
 
 git checkout develop | awk '{print $0}'
 
