@@ -15,7 +15,7 @@ summary:
 
 #### 语法
 
-```shell
+```
 wc [-clw][--help][--version][文件...]
 ```
 
@@ -23,7 +23,7 @@ wc [-clw][--help][--version][文件...]
 
 #### 参数
 
-```shell
+```
 # 参数解读
     # -c 显示Bytes数
     # -l 显示行数
@@ -37,7 +37,7 @@ wc [-clw][--help][--version][文件...]
 
 #### 示例
 
-```shell
+```
 # 示例
 wc demo.csv
 #		行数		字数	  字节数		文件名

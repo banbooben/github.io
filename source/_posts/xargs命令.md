@@ -18,7 +18,7 @@ xargs是一个给命令传递参数的过滤器，也是组合多个命令的工
 
 #### 命令
 
-```shell
+```
 somecommand |xargs -item  command
 ```
 
@@ -26,7 +26,7 @@ somecommand |xargs -item  command
 
 #### 参数
 
-```shell
+```
 # -item参数解读
 	# -a file 从文件中读取数据，作为输入数据
 	# -e flag xargs分析道含有flag这个标志的时候就会停止
@@ -49,7 +49,7 @@ somecommand |xargs -item  command
 
 #### 示例
 
-```shell
+```
 # 示例 demo.txt
 cat demo.txt
 > a b c d

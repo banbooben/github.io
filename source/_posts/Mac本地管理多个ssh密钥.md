@@ -26,7 +26,7 @@ categories: Linux
 
 #### 生成密钥
 
-```shell
+```
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 # 或
 ssh-keygen -t rsa  -C "your_email@example.com"
@@ -44,7 +44,7 @@ ssh-keygen -t rsa -b 4096 -C "sarmn@abc.com"
 
 #### 修改`~/.shh/config`配置文件
 
-```shell
+```
 # 只有一个时的全局写法
 # Host *
 #   AddKeysToAgent yes
@@ -76,7 +76,7 @@ Host git.abc.com
 
 #### 启动后台ssh代理
 
-```shell
+```
 eval "$(ssh-agent -s)"
 > Agent pid 59566
 ```
@@ -85,7 +85,7 @@ eval "$(ssh-agent -s)"
 
 #### 将私钥添加到ssh-agent并将密码存储在密钥链中(若设置的有密码)
 
-```shell
+```
 # 添加到管理
 ssh-add -K ~/.ssh/id_rsa_abc
 
@@ -97,7 +97,7 @@ ssh-add -l
 
 #### 若设置的有全局的用户名和邮箱需要执行以下操作
 
-```shell
+```
 # 清除全局使用的 用户名、邮箱 配置
 git config --global --unset user.name
 git config --global --unset user.email
@@ -113,7 +113,7 @@ git config user.name 'sarmn'
 
 #### 相应仓库中加入创建的ssh公钥
 
-```shell
+```
 # 可以使用pbcopy < 命令来进行拷贝公钥到粘贴板
 pbcopy < ~/.ssh/id_rsa.pub
 

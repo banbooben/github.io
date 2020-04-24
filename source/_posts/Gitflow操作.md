@@ -60,14 +60,14 @@ summary:
 
     ![img](http://blog.didispace.com/content/images/posts/gitflow-info-6.png)
 
-    ```shell
+    ```
     git branch develop
     git push -u origin develop
     ```
 
   - 其他开发者克隆（clone）中央仓库，并且为develop创建一个追踪分支。
 
-    ```shell
+    ```
     git clone ssh://user@host/path/to/repo.git
     git checkout -b develop origin/develop
     ```
@@ -76,7 +76,7 @@ summary:
 
     ![img](http://blog.didispace.com/content/images/posts/gitflow-info-7.png)
 
-    ```shell
+    ```
     git checkout -b some-feature develop
     
     git status
@@ -88,7 +88,7 @@ summary:
 
     ![img](http://blog.didispace.com/content/images/posts/gitflow-info-8.png)
 
-    ```shell
+    ```
     # 每次提交前要先pull代码
     git pull origin develop
     git checkout develop
@@ -101,7 +101,7 @@ summary:
 
     ![img](http://blog.didispace.com/content/images/posts/gitflow-info-9.png)
 
-    ```shell
+    ```
     git checkout -b release-0.1 develop
     ```
 
@@ -113,7 +113,7 @@ summary:
 
     ![img](http://blog.didispace.com/content/images/posts/gitflow-info-10.png)
 
-    ```shell
+    ```
     git checkout master
     git merge release-0.1
     git push
@@ -127,7 +127,7 @@ summary:
 
     > 此处将代码合并到master分支，应该打上合适的标签(tag)
     >
-    > ```shell
+    > ```
     > git tag -a 0.1 -m"Initial public release" master
     > git push --tags
     > ```
@@ -136,7 +136,7 @@ summary:
 
     ![img](http://blog.didispace.com/content/images/posts/gitflow-info-11.png)
     
-    ```shell
+    ```
     git checkout -b issue-#001 master
     \# Fix the bug
     
