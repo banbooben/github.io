@@ -157,3 +157,4 @@ summary:
 - git merge –no-ff 可以保留merge之前的历史分支
 
 
+[参考: Gitflow工作流程]([https://blog.csdn.net/happydeer/article/details/17618935?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522158813816319724839232386%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=158813816319724839232386&biz_id=0&utm_source=](https://blog.csdn.net/happydeer/article/details/17618935?ops_request_misc=%7B%22request%5Fid%22%3A%22158813816319724839232386%22%2C%22scm%22%3A%2220140713.130102334.pc%5Fblog.%22%7D&request_id=158813816319724839232386&biz_id=0&utm_source=))
