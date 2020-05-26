@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>Gitflow操作 | SArMn's Blog</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=0.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/8.0.1/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.1/pure-min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/1.0.1/grids-responsive-min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/2.0.4/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/2.1.4/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/2.1.4/toastr.min.css"><meta name="generator" content="Hexo 4.2.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">Gitflow操作</h1><a id="logo" href="/.">SArMn's Blog</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/"><i class="fa fa-user"> 我的</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">Gitflow操作</h1><div class="post-meta">2020-04-14<span> | </span><span class="category"><a href="/categories/Git/">Git</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><div class="post-content"><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><ul>
+<li>Gitflow流程仍然使用一个中央代码仓库，它是所有开发者的信息交流中心。跟其他的工作流程一样，开发者在本地完成开发，然后再将分支代码推送到中央仓库。唯一不同的是项目中分支的结构。</li>
+<li>Gitflow主要使用两个分支来记录项目的开发进程（master和develop分支）。</li>
+<li><strong>Gitflow流程就是围绕这两个分支</strong></li>
+</ul>
+<h4 id="Git-Flow-常用分支"><a href="#Git-Flow-常用分支" class="headerlink" title="Git Flow 常用分支"></a>Git Flow 常用分支</h4><ul>
+<li>Git Flow 在管理过程中一般拥有5类常用分支：<ul>
+<li><strong>master分支(保护分支)</strong><ul>
+<li>又名production分支，用于保存官方的发布历史(正式)    ：</li>
+<li>只有这个分支的代码才会发布到生产环境</li>
+<li>此分支只能从其他分支合并，不能直接修改</li>
+<li>所有来到master分支的commit都应该被打tag</li>
+<li>也可使用版本号为master上的所有提交打标签（tag）也很方便。</li>
+</ul>
+</li>
+<li><strong>develop分支(保护分支)：</strong><ul>
+<li><strong>这是我们的主开发分支</strong>，工程师所有的功能性开发都会基于develop分支。</li>
+<li>develop分支包含所有要发布到下一个release的代码。</li>
+<li>这个分支有以下特性：<ul>
+<li>不主动向其他分支合入代码；</li>
+<li>作为feature分支的源分支，最终接受feature分支的代码合入；</li>
+<li>作为release分支的源分支，接受最终release分支的合入；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>feature分支：</strong><ul>
+<li><strong>这是工程师用来开发一个新功能的分支</strong>，一旦开发完成，Maintainer将其合入develop分支</li>
+<li>从而将这些功能准备进入下一个release。</li>
+<li><strong>注意：</strong>一旦feature分支合入develop分支，Maintainer应立即删除该feature分支； </li>
+</ul>
+</li>
+<li><strong>release分支：</strong><ul>
+<li><strong>用于产品发布使用的分支</strong></li>
+<li>develop分支积聚了足够多的新功能（或者预定的发布日期临近了），我们需要发布一个release分支时，Maintainer需要基于develop分支，创建相应的release分支。</li>
+<li>完成release分支之后，Maintainer需要将release分支同时合入master分支以及合回develop分支（合入master分支之后，立即完成master分支的tag操作，最终maintainer删除release分支）</li>
+</ul>
+</li>
+<li><strong>hotfix分支：</strong><ul>
+<li><strong>出现bug时用于修改该bug创建的分支</strong></li>
+<li>只有当master分支上出现bug时，我们会采用hotfix分支。</li>
+<li>hotfix分支源于master分支，完成bug修复之后，同时合入master分支以及develop分支</li>
+<li>注意: hotfix合入master分支之后，额外立即完成master分支的tag操作，并删除hotfix分支。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="开发使用实例"><a href="#开发使用实例" class="headerlink" title="开发使用实例"></a>开发使用实例</h3><ul>
+<li>master和develop分支模型</li>
+</ul>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-5.png" alt="img"></p>
+<ul>
+<li><p>使用详解</p>
+<ul>
+<li><p>创建空的develop分支，推送到服务器，用于功能开发，develop分支将包含项目的所有历史，而master会是一个缩减版本。</p>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-6.png" alt="img"></p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">git</span> <span class="keyword">branch </span>develop</span><br><span class="line"><span class="symbol">git</span> <span class="keyword">push </span>-u origin develop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他开发者克隆（clone）中央仓库，并且为develop创建一个追踪分支。</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">clone</span> <span class="title">ssh</span>://user@host/path/to/repo.git</span><br><span class="line">git checkout -b develop origin/develop</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开发者开发的时候创建基于develop的开发分支，开发自己的功能，即<strong>feature分支</strong></p>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-7.png" alt="img"></p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="keyword">some</span>-feature develop</span><br><span class="line"></span><br><span class="line">git status</span><br><span class="line">git <span class="keyword">add</span> &lt;<span class="keyword">some</span>-file&gt;</span><br><span class="line">git <span class="keyword">commit</span> -m <span class="string">'text'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能开发完毕，就可以将代码合并到develop分支</p>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-8.png" alt="img"></p>
+<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 每次提交前要先pull代码</span><br><span class="line">git pull <span class="built_in">origin</span> develop</span><br><span class="line">git checkout develop</span><br><span class="line">git merge <span class="built_in">some</span>-<span class="built_in">feature</span></span><br><span class="line">git <span class="built_in">push</span></span><br><span class="line">git branch -d <span class="built_in">some</span>-<span class="built_in">feature</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>功能开发完毕，发布产品时，需要发布一个release分支来做产品发布的准备工作,即<strong>release分支</strong></p>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-9.png" alt="img"></p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b release<span class="number">-0.1</span> develop</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>1、专门用于发布前的准备，包括一些清理工作、全面的<a href="http://lib.csdn.net/base/softwaretest" target="_blank" rel="noopener">测试</a>、文档的更新以及任何其他的准备工作。</p>
+<p>2、发布的版本号也最初确定下来</p>
+</blockquote>
+</li>
+<li><p>发布工作准备好之后就可以进行分支合并发布了,发布分支合并入master和develop分支</p>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-10.png" alt="img"></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">git</span> <span class="string">checkout master</span></span><br><span class="line"><span class="attr">git</span> <span class="string">merge release-0.1</span></span><br><span class="line"><span class="attr">git</span> <span class="string">push</span></span><br><span class="line"></span><br><span class="line"><span class="attr">git</span> <span class="string">checkout develop</span></span><br><span class="line"><span class="attr">git</span> <span class="string">merge release-0.1</span></span><br><span class="line"><span class="attr">git</span> <span class="string">push</span></span><br><span class="line"></span><br><span class="line"><span class="attr">git</span> <span class="string">branch -d release-0.1</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>此处将代码合并到master分支，应该打上合适的标签(tag)</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">tag</span> <span class="title">-a</span> <span class="number">0.1</span> -m<span class="string">"Initial public release"</span> <span class="literal">master</span></span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>产品发布后发现bug需要修改时，此时创建基于master的维护分支，即<strong>hotfix分支</strong></p>
+<p><img src="http://blog.didispace.com/content/images/posts/gitflow-info-11.png" alt="img"></p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b issue-<span class="comment">#001 master</span></span><br><span class="line">\<span class="comment"># Fix the bug</span></span><br><span class="line"></span><br><span class="line">git checkout <span class="literal">master</span></span><br><span class="line">git merge issue-<span class="comment">#001</span></span><br><span class="line">git push</span><br><span class="line">git <span class="keyword">tag</span> <span class="title">-a</span> <span class="number">0.1</span> -m <span class="string">"Fix some bug"</span> <span class="literal">master</span></span><br><span class="line">git push --tags</span><br><span class="line"></span><br><span class="line">git checkout develop</span><br><span class="line">git merge issue-<span class="comment">#001</span></span><br><span class="line">git push</span><br><span class="line">git branch -d issue-<span class="comment">#001</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>维护分支和发布分支一样，代码要合并到master和develop两分支</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>git merge –no-ff 可以保留merge之前的历史分支</p>
+</li>
+</ul>
+<p><a href="[https://blog.csdn.net/happydeer/article/details/17618935?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522158813816319724839232386%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fblog.%2522%257D&request_id=158813816319724839232386&biz_id=0&utm_source=](https://blog.csdn.net/happydeer/article/details/17618935?ops_request_misc=%7B%22request%5Fid%22%3A%22158813816319724839232386%22%2C%22scm%22%3A%2220140713.130102334.pc%5Fblog.%22%7D&request_id=158813816319724839232386&biz_id=0&utm_source=)">参考: Gitflow工作流程</a></p>
+</div><div class="tags"><a href="/tags/Gitflow/"><i class="fa fa-tag"></i>Gitflow</a></div><div class="post-nav"><a class="pre" href="/2020/05/27/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E7%AC%A6%E9%9B%86/">批量修改mysql数据库字符集</a><a class="next" href="/2020/04/01/xargs%E5%91%BD%E4%BB%A4/">xargs命令</a></div></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><div class="search-form"><input id="local-search-input" placeholder="Search" type="text" name="q" results="0"/><div id="local-search-result"></div></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Categories</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/mysql/">mysql</a><span class="category-list-count">1</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/linux-ssh/" style="font-size: 15px;">linux ssh</a> <a href="/tags/grep/" style="font-size: 15px;">grep</a> <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/Vue%E8%AF%AD%E6%B3%95/" style="font-size: 15px;">Vue语法</a> <a href="/tags/wc/" style="font-size: 15px;">wc</a> <a href="/tags/xargs/" style="font-size: 15px;">xargs</a> <a href="/tags/Gitflow/" style="font-size: 15px;">Gitflow</a> <a href="/tags/%E4%BF%AE%E6%94%B9%E5%AD%97%E7%AC%A6%E9%9B%86/" style="font-size: 15px;">修改字符集</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Recent</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2020/05/27/%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AD%97%E7%AC%A6%E9%9B%86/">批量修改mysql数据库字符集</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/14/Gitflow%E6%93%8D%E4%BD%9C/">Gitflow操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/xargs%E5%91%BD%E4%BB%A4/">xargs命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/grep%E5%91%BD%E4%BB%A4/">grep命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/01/wc%E5%91%BD%E4%BB%A4/">wc命令</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/25/Mac%E6%9C%AC%E5%9C%B0%E7%AE%A1%E7%90%86%E5%A4%9A%E4%B8%AAssh%E5%AF%86%E9%92%A5/">Mac本地管理多个ssh密钥</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/vue%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">vue学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/22/docker%E5%91%BD%E4%BB%A4/">docker命令</a></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-external-link"> Links</i></div></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2020 <a href="/." rel="nofollow">SArMn's Blog  |  </a><a rel="nofollow" target="_blank" href="http://www.beian.miit.gov.cn/"> 豫ICP备19018535号-1</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=0.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js" async></script><script type="text/javascript" src="/js/fancybox.js?v=0.0.0" async></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css"><link rel="stylesheet" type="text/css" href="/css/search.css?v=0.0.0"><script type="text/javascript" src="/js/search.js?v=0.0.0"></script><script>var search_path = 'search.xml';
+if (search_path.length == 0) {
+   search_path = 'search.xml';
+}
+var path = '/' + search_path;
+searchFunc(path, 'local-search-input', 'local-search-result');
+</script><script type="text/javascript" color="0,0,0" opacity="0.5" zIndex="-2" count="50" src="//lib.baomitu.com/canvas-nest.js/2.0.4/canvas-nest.umd.js"></script><script type="text/javascript" src="/js/copycode.js" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css"><script type="text/x-mathjax-config">MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+  });
+</script><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" async></script><script type="text/javascript" src="/js/codeblock-resizer.js?v=0.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=0.0.0"></script></div></body></html>
